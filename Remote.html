@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let Tivi = function (channel, volume) {
+        this.channel= channel;
+        this.volume=volume;
+        this.status=false;
+        this.setchannel = function (kenh) {
+            this.channel=kenh;
+        };
+        this.getchannel = function () {
+            return this.channel;
+        }
+        this.turnOff = function () {
+            this.status = false;
+        };
+        this.turnOn = function () {
+            this.status = true;
+        };
+        this.check = function () {
+            if (this.status) {
+                console.log("Tivi: On")
+            } else {
+                console.log("Tivi: Off")
+            }
+        };
+        this.changeChannel = function () {
+            this.channel++;
+        };
+        this.changeChannel1 = function () {
+            this.channel--;
+        }
+        this.changeVolume = function () {
+            this.volume++;
+        };
+        this.changeVolume1 = function () {
+            this.volume--;
+        };
+
+    };
+    let Remote = function () {
+        this.changeC = function (tivi) {
+            tivi.channel++
+        };
+        this.changeV = function (tivi) {
+            tivi.volume++
+        };
+        this.changeC1 = function (tivi) {
+            tivi.channel--;
+        };
+        this.changeV1 = function (tivi) {
+            tivi.volume--;
+        };
+        this.turnOn = function (tivi) {
+            tivi.turnOn();
+        };
+        this.turnOff = function (tivi) {
+            tivi.turnOff();
+        }
+    };
+    let tivi = new Tivi(1,15);
+    let remote = new Remote();
+    tivi.turnOn();
+    tivi.check();
+    console.log('Am Luong:'+tivi.volume);
+    console.log('Kenh:'+tivi.getchannel());
+    tivi.changeChannel();
+    tivi.changeChannel();
+    tivi.changeChannel();
+    tivi.changeChannel();
+    tivi.changeChannel();
+    tivi.changeChannel();
+    console.log('Kenh:'+tivi.getchannel());
+    remote.changeC1(tivi);
+    remote.changeC1(tivi);
+    remote.changeC1(tivi);
+    remote.changeC1(tivi);
+    console.log('Kenh:'+tivi.getchannel());
+    tivi.changeVolume();
+    tivi.changeVolume();
+    console.log('Am Luong: '+tivi.volume);
+    remote.turnOff(tivi);
+    tivi.check();
+
+
+
+
+    
+</script>
+
+</body>
+</html>
